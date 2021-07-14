@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import DataCollector from './DataCollector';
 import { Data } from "../interfaces"
+import Computation from './Computation';
 
 function App() {
 
@@ -27,7 +28,12 @@ function App() {
         fields={fields}
         setFields={setFields}
         c4Liable={c4Liable}
-        setC4Liable={setC4Liable} />
+        setC4Liable={setC4Liable}
+      />
+      <Computation
+        fields={fields}
+        c4Liable={c4Liable}
+      />
     </div>
   );
 }

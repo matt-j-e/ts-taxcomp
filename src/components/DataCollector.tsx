@@ -38,49 +38,137 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             <option value="2019">5th April 2019</option>
           </select>
         </div>
+
         <div>
           <label htmlFor="employment">Employment</label>
-          <input type="text" id="employment" name="employment" value={fields.employment} onChange={handleFieldChange} onBlur={handleAddData} />
+          <input
+            type="text"
+            id="employment"
+            name="employment"
+            value={fields.employment}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
           <label htmlFor="pensionState">State Pension</label>
-          <input type="text" id="pensionState" name="pensionState" value={fields.pensionState} onChange={handleFieldChange} onBlur={handleAddData} />
+          <input
+            type="text"
+            id="pensionState"
+            name="pensionState"
+            value={fields.pensionState}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
           <label htmlFor="pensionPrivate">Private Pension</label>
-          <input type="text" id="pensionPrivate" name="pensionPrivate" value={fields.pensionPrivate} onChange={handleFieldChange} onBlur={handleAddData} />
+          <input
+            type="text"
+            id="pensionPrivate"
+            name="pensionPrivate"
+            value={fields.pensionPrivate}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
           <label htmlFor="selfEmployment">Self Employment</label>
-          <input type="text" id="selfEmployment" name="selfEmployment" value={fields.selfEmployment} onChange={handleFieldChange} onBlur={handleAddData} />
+          <input
+            type="text"
+            id="selfEmployment"
+            name="selfEmployment"
+            value={fields.selfEmployment}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
           <label htmlFor="partnership">Partnership</label>
-          <input type="text" id="partnership" name="partnership" value={fields.partnership} onChange={handleFieldChange} onBlur={handleAddData} />
+          <input
+            type="text"
+            id="partnership"
+            name="partnership"
+            value={fields.partnership}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
           <label htmlFor="c4Liable">Tick if you are liable for C4 NICs</label>
-          <input type="checkbox" id="c4Liable" name="c4Liable" checked={c4Liable} onChange={handleC4Change} onBlur={handleAddData} />
+          <input
+            type="checkbox"
+            id="c4Liable"
+            name="c4Liable"
+            checked={c4Liable}
+            onChange={handleC4Change}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
           <label htmlFor="rental">Rental</label>
-          <input type="text" id="rental" name="rental" value={fields.rental} onChange={handleFieldChange} onBlur={handleAddData} />
+          <input
+            type="text"
+            id="rental"
+            name="rental"
+            value={fields.rental}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
           <label htmlFor="interest">Interest</label>
-          <input type="text" id="interest" name="interest" value={fields.interest} onChange={handleFieldChange} onBlur={handleAddData} />
+          <input
+            type="text"
+            id="interest"
+            name="interest"
+            value={fields.interest}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
-          <label htmlFor="dividends">Dividends</label>
-          <input type="text" id="dividends" name="dividends" value={fields.dividend} onChange={handleFieldChange} onBlur={handleAddData} />
+          <label htmlFor="dividend">Dividends</label>
+          <input
+            type="text"
+            id="dividend"
+            name="dividend"
+            value={fields.dividend}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
           <label htmlFor="pensionContrib">Pension Contributions</label>
-          <input type="text" id="pensionContrib" name="pensionContrib" value={fields.pensionContrib} onChange={handleFieldChange} onBlur={handleAddData} />
+          <input
+            type="text"
+            id="pensionContrib"
+            name="pensionContrib"
+            value={fields.pensionContrib}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
+
         <div>
           <label htmlFor="giftAid">Gift Aid Donations</label>
-          <input type="text" id="giftAid" name="giftAid" value={fields.giftAid} onChange={handleFieldChange} onBlur={handleAddData} />
+          <input
+            type="text"
+            id="giftAid"
+            name="giftAid"
+            value={fields.giftAid}
+            onChange={handleFieldChange}
+            onBlur={handleAddData}
+          />
         </div>
       </form>
     </div>
