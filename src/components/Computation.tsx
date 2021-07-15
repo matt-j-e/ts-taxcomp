@@ -1,5 +1,6 @@
 import { Data } from "../interfaces";
 import { Comp } from "../resources/comp";
+import IncomeElement from "./IncomeElement";
 
 interface ComputationProps {
   fields: Data;
@@ -14,46 +15,17 @@ const Computation = ({ fields, c4Liable }: ComputationProps) => {
     <div>
       <h2>Income tax computation</h2>
       <section>
-        <div>
-          <span>Employment</span>
-          <span>{Number(employment)}</span>
-        </div>
-        <div>
-          <span>Pension</span>
-          <span>{Number(pensionPrivate) + Number(pensionState)}</span>
-        </div>
-        <div>
-          <span>Self Employment</span>
-          <span>{Number(selfEmployment)}</span>
-        </div>
-        <div>
-          <span>Partnership</span>
-          <span>{Number(partnership)}</span>
-        </div>
-        <div>
-          <span>Rental</span>
-          <span>{Number(rental)}</span>
-        </div>
-        <div>
-          <span>Interest</span>
-          <span>{Number(interest)}</span>
-        </div>
-        <div>
-          <span>Dividends</span>
-          <span>{Number(dividend)}</span>
-        </div>
-        <div>
-          <span>Total income</span>
-          <span>{comp.totalIncome}</span>
-        </div>
-        <div>
-          <span>Personal Allowance</span>
-          <span>{comp.availablePA}</span>
-        </div>
-        <div>
-          <span>Taxable income</span>
-          <span>{Math.max(comp.totalIncome - comp.availablePA, 0)}</span>
-        </div>
+        <IncomeElement name="Employment" value={employment} elementClass="income-element" />
+        <IncomeElement name="Private Pension" value={pensionPrivate} elementClass="income-element" />
+        <IncomeElement name="State Pension" value={pensionState} elementClass="income-element" />
+        <IncomeElement name="Self Employment" value={selfEmployment} elementClass="income-element" />
+        <IncomeElement name="Partnership" value={partnership} elementClass="income-element" />
+        <IncomeElement name="Rental" value={rental} elementClass="income-element" />
+        <IncomeElement name="Interest" value={interest} elementClass="income-element" />
+        <IncomeElement name="Dividends" value={dividend} elementClass="income-element" />
+        <IncomeElement name="Total income" value={comp.totalIncome} elementClass="total-row" />
+        <IncomeElement name="Personal Allowance" value={comp.availablePA} elementClass="income-element" />
+        <IncomeElement name="Taxable Income" value={Math.max(comp.totalIncome - comp.availablePA, 0)} elementClass="total-row" />
       </section>
 
       <section>
