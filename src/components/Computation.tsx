@@ -1,12 +1,12 @@
 import { Data } from "../interfaces";
 import { Comp } from "../resources/comp";
 
-interface AppProps {
+interface ComputationProps {
   fields: Data;
   c4Liable: boolean;
 }
 
-const Computation = ({ fields, c4Liable }: AppProps) => {
+const Computation = ({ fields, c4Liable }: ComputationProps) => {
   const { taxYear, employment, pensionPrivate, pensionState, selfEmployment, partnership, rental, interest, dividend } = fields
   const comp = new Comp(fields, c4Liable, Number(taxYear));
 
@@ -77,13 +77,25 @@ const Computation = ({ fields, c4Liable }: AppProps) => {
 
       <section>
         <h3>savings income tax</h3>
+        { comp.savingsIncomeBRZero > 0 && 
+          <div>
+            <span>{comp.savingsIncomeBRZero}</span> 
+            <span>at 0%</span>
+          </div>
+        }
         <div>
-          <span>{comp.savingsIncomeBRB}</span>
+          <span>{comp.savingsIncomeBRB - comp.savingsIncomeBRZero}</span>
           <span>at {comp.br * 100}%</span>
           <span>{comp.savingsIncomeBRTax}</span>
         </div>
+        { comp.savingsIncomeHRZero > 0 && 
+          <div>
+            <span>{comp.savingsIncomeHRZero}</span> 
+            <span>at 0%</span>
+          </div>
+        }
         <div>
-          <span>{comp.savingsIncomeHRB}</span>
+          <span>{comp.savingsIncomeHRB - comp.savingsIncomeHRZero}</span>
           <span>at {comp.hr * 100}%</span>
           <span>{comp.savingsIncomeHRTax}</span>
         </div>
@@ -92,17 +104,30 @@ const Computation = ({ fields, c4Liable }: AppProps) => {
           <span>at {comp.ar * 100}%</span>
           <span>{comp.savingsIncomeARTax}</span>
         </div>
+
       </section>
 
       <section>
         <h3>dividend income tax</h3>
+        { comp.dividendIncomeBRZero > 0 && 
+          <div>
+            <span>{comp.dividendIncomeBRZero}</span> 
+            <span>at 0%</span>
+          </div>
+        }
         <div>
-          <span>{comp.dividendIncomeBRB}</span>
+          <span>{comp.dividendIncomeBRB - comp.dividendIncomeBRZero}</span>
           <span>at {comp.brdiv * 100}%</span>
           <span>{comp.dividendIncomeBRTax}</span>
         </div>
+        { comp.dividendIncomeHRZero > 0 && 
+          <div>
+            <span>{comp.dividendIncomeHRZero}</span> 
+            <span>at 0%</span>
+          </div>
+        }
         <div>
-          <span>{comp.dividendIncomeHRB}</span>
+          <span>{comp.dividendIncomeHRB - comp.dividendIncomeHRZero}</span>
           <span>at {comp.hrdiv * 100}%</span>
           <span>{comp.dividendIncomeHRTax}</span>
         </div>
@@ -119,14 +144,17 @@ const Computation = ({ fields, c4Liable }: AppProps) => {
           <span>Total tax</span>
           <span>{comp.allTax}</span>
         </div>
+        { c4Liable && 
+        <>
         <div>
           <span>Class 4 NICs</span>
           <span>{comp.c4liability}</span>
-        </div>
+        </div> 
         <div>
           <span>Total tax & national insurance</span>
           <span>{comp.allTaxNI}</span>
         </div>
+        </> }
       </section>
       <br />
     </div>
