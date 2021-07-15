@@ -11,23 +11,3 @@ export interface Data {
   pensionContrib: string;
   giftAid: string;
 }
-
-export interface RatesType {
-  fullPA: number;
-  paTaperStartPoint: number; 
-  brbTopStartPoint: number; 
-  hrbTop: number; 
-  dividendAllowance: number; 
-  brSavingsAllowance: number; 
-  hrSavingsAllowance: number; 
-  br: number;
-  hr: number; 
-  ar: number;
-  brdiv:number;
-  hrdiv: number;
-  ardiv: number;
-  c4lpl: number;
-  c4upl: number;
-  c4sr: number;
-  c4ur: number
-}

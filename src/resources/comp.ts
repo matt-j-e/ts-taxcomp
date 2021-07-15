@@ -1,5 +1,5 @@
 import { Rates } from "../resources/rates";
-import { Data, RatesType } from "../interfaces"
+import { Data } from "../interfaces"
 
 export class Comp {
   employment: number;
@@ -32,7 +32,7 @@ export class Comp {
   c4ur: number;
 
   constructor(profile: Data, c4: boolean, taxYear: number) {
-      const rates: RatesType = Rates[2021];
+      const rates = Rates[taxYear as keyof typeof Rates];
 
       this.employment = Number(profile.employment);
       this.pensionState = Number(profile.pensionState);

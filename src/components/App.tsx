@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import DataCollector from './DataCollector';
-import { Data } from "../interfaces"
 import Computation from './Computation';
+import { Data } from "../interfaces"
 
 function App() {
 

@@ -9,10 +9,10 @@ interface AppProps {
 
 const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) => {
 
-  const handleAddData = (e: React.FocusEvent<HTMLSelectElement> | React.FocusEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    console.log(fields, c4Liable);
-  }
+  // const handleAddData = (e: React.FocusEvent<HTMLSelectElement> | React.FocusEvent<HTMLInputElement>) => {
+  //   e.preventDefault();
+  //   console.log(fields, c4Liable);
+  // }
 
   const handleFieldChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
     setFields((prev) => {
@@ -32,7 +32,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
       <form>
         <div>
           <label htmlFor="taxYear">Tax Year ended</label>
-          <select name="taxYear" id="taxYear" value={fields.taxYear} onChange={handleFieldChange} onBlur={handleAddData}>
+          <select name="taxYear" id="taxYear" value={fields.taxYear} onChange={handleFieldChange}>
             <option value="2021">5th April 2021</option>
             <option value="2020">5th April 2020</option>
             <option value="2019">5th April 2019</option>
@@ -47,7 +47,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="employment"
             value={fields.employment}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -59,7 +59,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="pensionState"
             value={fields.pensionState}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -71,7 +71,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="pensionPrivate"
             value={fields.pensionPrivate}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -83,7 +83,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="selfEmployment"
             value={fields.selfEmployment}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -95,7 +95,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="partnership"
             value={fields.partnership}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -107,7 +107,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="c4Liable"
             checked={c4Liable}
             onChange={handleC4Change}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -119,7 +119,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="rental"
             value={fields.rental}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -131,7 +131,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="interest"
             value={fields.interest}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -143,7 +143,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="dividend"
             value={fields.dividend}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -155,7 +155,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="pensionContrib"
             value={fields.pensionContrib}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
 
@@ -167,7 +167,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             name="giftAid"
             value={fields.giftAid}
             onChange={handleFieldChange}
-            onBlur={handleAddData}
+            // onBlur={handleAddData}
           />
         </div>
       </form>
