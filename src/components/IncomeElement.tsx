@@ -1,15 +1,18 @@
+import { Container } from "../styles/IncomeElement";
+
 interface IncomeElementProps {
   name: string;
   value: string | number;
-  elementClass: string;
+  elementClass?: string | null;
 }
 
 const IncomeElement = ({ name, value, elementClass }: IncomeElementProps) => {
+  if (!elementClass) elementClass = "";
   return (
-    <div className={`${elementClass}`}>
+    <Container className={`${elementClass}`}>
       <span>{name}</span>
       <span>{Number(value)}</span>
-    </div>
+    </Container>
   )
 };
 

@@ -66,18 +66,18 @@ export class Comp {
   }
 
   get paTaperThreshold() {
-      // adding gross pension contribs to PA taper trigger
-      return this.paTaperStartPoint + this.pensionContrib;
+      // adding gross pension contribs & gross gift aid to PA taper trigger
+      return this.paTaperStartPoint + this.pensionContrib + this.giftAid;
   }
 
   get brbTop() {
-      // adding gross pension contribs to BRB
-      return this.brbTopStartPoint + this.pensionContrib;
+      // adding gross pension contribs & gross gift aid to BRB
+      return this.brbTopStartPoint + this.pensionContrib + this.giftAid;
   }
 
   get hrBand() {
-      // the actual HR band, adjusted for pension contributions
-      return this.hrbTop - (this.brbTop - this.pensionContrib);
+      // the actual HR band, adjusted for pension contributions & gift aid
+      return this.hrbTop - (this.brbTop - this.pensionContrib - this.giftAid);
   }
 
   get earnedIncome() {

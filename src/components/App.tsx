@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import DataCollector from './DataCollector';
 import Computation from './Computation';
-import { Data } from "../interfaces"
+import { Data } from "../interfaces";
+import { Container } from '../styles/App';
 
 function App() {
 
@@ -23,7 +24,7 @@ function App() {
   const [c4Liable, setC4Liable] = useState<boolean>(true);
 
   return (
-    <div className="App">
+    <Container className="App">
       <DataCollector
         fields={fields}
         setFields={setFields}
@@ -34,7 +35,7 @@ function App() {
         fields={fields}
         c4Liable={c4Liable}
       />
-    </div>
+    </Container>
   );
 }
 

@@ -1,4 +1,6 @@
 import { Data } from "../interfaces"
+import { Container, Form, FormEntry } from "../styles/DataCollector";
+import { MainHeading } from "../styles/Global";
 
 interface AppProps {
   fields: Data;
@@ -27,19 +29,19 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
   }
 
   return (
-    <div>
-      <h2>Income Details</h2>
-      <form>
-        <div>
-          <label htmlFor="taxYear">Tax Year ended</label>
+    <Container>
+      <MainHeading>Income Details</MainHeading>
+      <Form>
+        <FormEntry>
+          <label className="bold" htmlFor="taxYear">Tax Year ended</label>
           <select name="taxYear" id="taxYear" value={fields.taxYear} onChange={handleFieldChange}>
             <option value="2021">5th April 2021</option>
             <option value="2020">5th April 2020</option>
             <option value="2019">5th April 2019</option>
           </select>
-        </div>
+        </FormEntry>
 
-        <div>
+        <FormEntry>
           <label htmlFor="employment">Employment</label>
           <input
             type="text"
@@ -49,9 +51,9 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
+        </FormEntry>
 
-        <div>
+        <FormEntry>
           <label htmlFor="pensionState">State Pension</label>
           <input
             type="text"
@@ -61,9 +63,9 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
+        </FormEntry>
 
-        <div>
+        <FormEntry>
           <label htmlFor="pensionPrivate">Private Pension</label>
           <input
             type="text"
@@ -73,9 +75,9 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
+        </FormEntry>
 
-        <div>
+        <FormEntry>
           <label htmlFor="selfEmployment">Self Employment</label>
           <input
             type="text"
@@ -85,9 +87,9 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
+        </FormEntry>
 
-        <div>
+        <FormEntry>
           <label htmlFor="partnership">Partnership</label>
           <input
             type="text"
@@ -97,21 +99,9 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
+        </FormEntry>
 
-        <div>
-          <label htmlFor="c4Liable">Tick if you are liable for C4 NICs</label>
-          <input
-            type="checkbox"
-            id="c4Liable"
-            name="c4Liable"
-            checked={c4Liable}
-            onChange={handleC4Change}
-            // onBlur={handleAddData}
-          />
-        </div>
-
-        <div>
+        <FormEntry>
           <label htmlFor="rental">Rental</label>
           <input
             type="text"
@@ -121,9 +111,9 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
+        </FormEntry>
 
-        <div>
+        <FormEntry>
           <label htmlFor="interest">Interest</label>
           <input
             type="text"
@@ -133,9 +123,9 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
+        </FormEntry>
 
-        <div>
+        <FormEntry>
           <label htmlFor="dividend">Dividends</label>
           <input
             type="text"
@@ -145,10 +135,10 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
+        </FormEntry>
 
-        <div>
-          <label htmlFor="pensionContrib">Pension Contributions</label>
+        <FormEntry>
+          <label htmlFor="pensionContrib">Pension Contributions (gross)</label>
           <input
             type="text"
             id="pensionContrib"
@@ -157,10 +147,10 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
+        </FormEntry>
 
-        <div>
-          <label htmlFor="giftAid">Gift Aid Donations</label>
+        <FormEntry>
+          <label htmlFor="giftAid">Gift Aid Donations (gross)</label>
           <input
             type="text"
             id="giftAid"
@@ -169,9 +159,21 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
             onChange={handleFieldChange}
             // onBlur={handleAddData}
           />
-        </div>
-      </form>
-    </div>
+        </FormEntry>
+
+        <FormEntry>
+          <label htmlFor="c4Liable">Tick if you are liable for C4 NICs</label>
+          <input
+            type="checkbox"
+            id="c4Liable"
+            name="c4Liable"
+            checked={c4Liable}
+            onChange={handleC4Change}
+            // onBlur={handleAddData}
+          />
+        </FormEntry>
+      </Form>
+    </Container>
   )
 
 

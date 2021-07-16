@@ -1,6 +1,8 @@
 import { Data } from "../interfaces";
 import { Comp } from "../resources/comp";
 import IncomeElement from "./IncomeElement";
+import { MainHeading } from "../styles/Global";
+import { Container, Section, SectionHeading, TaxRateBand } from "../styles/Computation";
 
 interface ComputationProps {
   fields: Data;
@@ -12,124 +14,118 @@ const Computation = ({ fields, c4Liable }: ComputationProps) => {
   const comp = new Comp(fields, c4Liable, Number(taxYear));
 
   return (
-    <div>
-      <h2>Income tax computation</h2>
-      <section>
-        <IncomeElement name="Employment" value={employment} elementClass="income-element" />
-        <IncomeElement name="Private Pension" value={pensionPrivate} elementClass="income-element" />
-        <IncomeElement name="State Pension" value={pensionState} elementClass="income-element" />
-        <IncomeElement name="Self Employment" value={selfEmployment} elementClass="income-element" />
-        <IncomeElement name="Partnership" value={partnership} elementClass="income-element" />
-        <IncomeElement name="Rental" value={rental} elementClass="income-element" />
-        <IncomeElement name="Interest" value={interest} elementClass="income-element" />
-        <IncomeElement name="Dividends" value={dividend} elementClass="income-element" />
+    <Container>
+      <MainHeading>Income tax computation</MainHeading>
+      <Section>
+        <IncomeElement name="Employment" value={employment} />
+        <IncomeElement name="Private Pension" value={pensionPrivate} />
+        <IncomeElement name="State Pension" value={pensionState} />
+        <IncomeElement name="Self Employment" value={selfEmployment} />
+        <IncomeElement name="Partnership" value={partnership} />
+        <IncomeElement name="Rental" value={rental} />
+        <IncomeElement name="Interest" value={interest} />
+        <IncomeElement name="Dividends" value={dividend} />
         <IncomeElement name="Total income" value={comp.totalIncome} elementClass="total-row" />
-        <IncomeElement name="Personal Allowance" value={comp.availablePA} elementClass="income-element" />
+        <IncomeElement name="Personal Allowance" value={comp.availablePA} />
         <IncomeElement name="Taxable Income" value={Math.max(comp.totalIncome - comp.availablePA, 0)} elementClass="total-row" />
-      </section>
+      </Section>
 
-      <section>
-        <h3>earned income tax</h3>
-        <div>
+      <Section>
+        <SectionHeading>earned income</SectionHeading>
+        <TaxRateBand>
           <span>{comp.earnedIncomeBRB}</span>
           <span>at {comp.br * 100}%</span>
           <span>{comp.earnedIncomeBRTax}</span>
-        </div>
-        <div>
+        </TaxRateBand>
+        <TaxRateBand>
           <span>{comp.earnedIncomeHRB}</span>
           <span>at {comp.hr * 100}%</span>
           <span>{comp.earnedIncomeHRTax}</span>
-        </div>
-        <div>
+        </TaxRateBand>
+        <TaxRateBand>
           <span>{comp.earnedIncomeARB}</span>
           <span>at {comp.ar * 100}%</span>
           <span>{comp.earnedIncomeARTax}</span>
-        </div>
-      </section>
+        </TaxRateBand>
+      </Section>
 
-      <section>
-        <h3>savings income tax</h3>
+      <Section>
+        <SectionHeading>savings income</SectionHeading>
         { comp.savingsIncomeBRZero > 0 && 
-          <div>
+          <TaxRateBand>
             <span>{comp.savingsIncomeBRZero}</span> 
             <span>at 0%</span>
-          </div>
+            <span>0</span>
+          </TaxRateBand>
         }
-        <div>
+        <TaxRateBand>
           <span>{comp.savingsIncomeBRB - comp.savingsIncomeBRZero}</span>
           <span>at {comp.br * 100}%</span>
           <span>{comp.savingsIncomeBRTax}</span>
-        </div>
+        </TaxRateBand>
         { comp.savingsIncomeHRZero > 0 && 
-          <div>
+          <TaxRateBand>
             <span>{comp.savingsIncomeHRZero}</span> 
             <span>at 0%</span>
-          </div>
+            <span>0</span>
+          </TaxRateBand>
         }
-        <div>
+        <TaxRateBand>
           <span>{comp.savingsIncomeHRB - comp.savingsIncomeHRZero}</span>
           <span>at {comp.hr * 100}%</span>
           <span>{comp.savingsIncomeHRTax}</span>
-        </div>
-        <div>
+        </TaxRateBand>
+        <TaxRateBand>
           <span>{comp.savingsIncomeARB}</span>
           <span>at {comp.ar * 100}%</span>
           <span>{comp.savingsIncomeARTax}</span>
-        </div>
+        </TaxRateBand>
 
-      </section>
+      </Section>
 
-      <section>
-        <h3>dividend income tax</h3>
+      <Section>
+        <SectionHeading>dividend income</SectionHeading>
         { comp.dividendIncomeBRZero > 0 && 
-          <div>
+          <TaxRateBand>
             <span>{comp.dividendIncomeBRZero}</span> 
             <span>at 0%</span>
-          </div>
+            <span>0</span>
+          </TaxRateBand>
         }
-        <div>
+        <TaxRateBand>
           <span>{comp.dividendIncomeBRB - comp.dividendIncomeBRZero}</span>
           <span>at {comp.brdiv * 100}%</span>
           <span>{comp.dividendIncomeBRTax}</span>
-        </div>
+        </TaxRateBand>
         { comp.dividendIncomeHRZero > 0 && 
-          <div>
+          <TaxRateBand>
             <span>{comp.dividendIncomeHRZero}</span> 
             <span>at 0%</span>
-          </div>
+            <span>0</span>
+          </TaxRateBand>
         }
-        <div>
+        <TaxRateBand>
           <span>{comp.dividendIncomeHRB - comp.dividendIncomeHRZero}</span>
           <span>at {comp.hrdiv * 100}%</span>
           <span>{comp.dividendIncomeHRTax}</span>
-        </div>
-        <div>
+        </TaxRateBand>
+        <TaxRateBand>
           <span>{comp.dividendIncomeARB}</span>
           <span>at {comp.ardiv * 100}%</span>
           <span>{comp.dividendIncomeARTax}</span>
-        </div>
-      </section>
+        </TaxRateBand>
+      </Section>
 
-      <section>
-        <h3>Totals</h3>
-        <div>
-          <span>Total tax</span>
-          <span>{comp.allTax}</span>
-        </div>
+      <Section>
+        <IncomeElement name="Total tax" value={comp.allTax} elementClass="grand-total-row" />
         { c4Liable && 
         <>
-        <div>
-          <span>Class 4 NICs</span>
-          <span>{comp.c4liability}</span>
-        </div> 
-        <div>
-          <span>Total tax & national insurance</span>
-          <span>{comp.allTaxNI}</span>
-        </div>
+        <IncomeElement name="Class 4 NICs" value={comp.c4liability} />
+        <IncomeElement name="Total tax & national insurance" value={comp.allTaxNI} elementClass="grand-total-row" /> 
         </> }
-      </section>
+      </Section>
       <br />
-    </div>
+    </Container>
   )
 }
 
