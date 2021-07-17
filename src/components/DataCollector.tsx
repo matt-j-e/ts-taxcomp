@@ -35,6 +35,7 @@ const DataCollector = ({ fields, setFields, c4Liable, setC4Liable }: AppProps) =
         <FormEntry>
           <label className="bold" htmlFor="taxYear">Tax Year ended</label>
           <select name="taxYear" id="taxYear" value={fields.taxYear} onChange={handleFieldChange}>
+            <option value="2022">5th April 2022</option>
             <option value="2021">5th April 2021</option>
             <option value="2020">5th April 2020</option>
             <option value="2019">5th April 2019</option>

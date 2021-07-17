@@ -7,7 +7,7 @@ import { Container } from '../styles/App';
 function App() {
 
   const initialState: Data = {
-    taxYear: "2021",
+    taxYear: "2022",
     employment: "",
     pensionState: "",
     pensionPrivate: "",

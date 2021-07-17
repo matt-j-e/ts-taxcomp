@@ -13,8 +13,8 @@ export const Container = styled.div`
   &.grand-total-row {
     text-transform: uppercase;
     font-weight: bold;
-    /* font-size: 1.2em; */
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
+    margin: 0.5rem 0;
     background-color: rgba(0,0,0,0.2);
   }
 `;

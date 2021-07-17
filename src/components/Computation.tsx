@@ -3,6 +3,7 @@ import { Comp } from "../resources/comp";
 import IncomeElement from "./IncomeElement";
 import { MainHeading } from "../styles/Global";
 import { Container, Section, SectionHeading, TaxRateBand } from "../styles/Computation";
+import { numberFormat } from "../helpers/numberFormat";
 
 interface ComputationProps {
   fields: Data;
@@ -33,19 +34,19 @@ const Computation = ({ fields, c4Liable }: ComputationProps) => {
       <Section>
         <SectionHeading>earned income</SectionHeading>
         <TaxRateBand>
-          <span>{comp.earnedIncomeBRB}</span>
+          <span>{numberFormat(comp.earnedIncomeBRB)}</span>
           <span>at {comp.br * 100}%</span>
-          <span>{comp.earnedIncomeBRTax}</span>
+          <span>{numberFormat(comp.earnedIncomeBRTax, 2)}</span>
         </TaxRateBand>
         <TaxRateBand>
-          <span>{comp.earnedIncomeHRB}</span>
+          <span>{numberFormat(comp.earnedIncomeHRB)}</span>
           <span>at {comp.hr * 100}%</span>
-          <span>{comp.earnedIncomeHRTax}</span>
+          <span>{numberFormat(comp.earnedIncomeHRTax, 2)}</span>
         </TaxRateBand>
         <TaxRateBand>
-          <span>{comp.earnedIncomeARB}</span>
+          <span>{numberFormat(comp.earnedIncomeARB)}</span>
           <span>at {comp.ar * 100}%</span>
-          <span>{comp.earnedIncomeARTax}</span>
+          <span>{numberFormat(comp.earnedIncomeARTax, 2)}</span>
         </TaxRateBand>
       </Section>
 
@@ -53,32 +54,32 @@ const Computation = ({ fields, c4Liable }: ComputationProps) => {
         <SectionHeading>savings income</SectionHeading>
         { comp.savingsIncomeBRZero > 0 && 
           <TaxRateBand>
-            <span>{comp.savingsIncomeBRZero}</span> 
+            <span>{numberFormat(comp.savingsIncomeBRZero)}</span> 
             <span>at 0%</span>
             <span>0</span>
           </TaxRateBand>
         }
         <TaxRateBand>
-          <span>{comp.savingsIncomeBRB - comp.savingsIncomeBRZero}</span>
+          <span>{numberFormat(comp.savingsIncomeBRB - comp.savingsIncomeBRZero)}</span>
           <span>at {comp.br * 100}%</span>
-          <span>{comp.savingsIncomeBRTax}</span>
+          <span>{numberFormat(comp.savingsIncomeBRTax, 2)}</span>
         </TaxRateBand>
         { comp.savingsIncomeHRZero > 0 && 
           <TaxRateBand>
-            <span>{comp.savingsIncomeHRZero}</span> 
+            <span>{numberFormat(comp.savingsIncomeHRZero)}</span> 
             <span>at 0%</span>
             <span>0</span>
           </TaxRateBand>
         }
         <TaxRateBand>
-          <span>{comp.savingsIncomeHRB - comp.savingsIncomeHRZero}</span>
+          <span>{numberFormat(comp.savingsIncomeHRB - comp.savingsIncomeHRZero)}</span>
           <span>at {comp.hr * 100}%</span>
-          <span>{comp.savingsIncomeHRTax}</span>
+          <span>{numberFormat(comp.savingsIncomeHRTax, 2)}</span>
         </TaxRateBand>
         <TaxRateBand>
-          <span>{comp.savingsIncomeARB}</span>
+          <span>{numberFormat(comp.savingsIncomeARB)}</span>
           <span>at {comp.ar * 100}%</span>
-          <span>{comp.savingsIncomeARTax}</span>
+          <span>{numberFormat(comp.savingsIncomeARTax, 2)}</span>
         </TaxRateBand>
 
       </Section>
@@ -87,41 +88,41 @@ const Computation = ({ fields, c4Liable }: ComputationProps) => {
         <SectionHeading>dividend income</SectionHeading>
         { comp.dividendIncomeBRZero > 0 && 
           <TaxRateBand>
-            <span>{comp.dividendIncomeBRZero}</span> 
+            <span>{numberFormat(comp.dividendIncomeBRZero)}</span> 
             <span>at 0%</span>
             <span>0</span>
           </TaxRateBand>
         }
         <TaxRateBand>
-          <span>{comp.dividendIncomeBRB - comp.dividendIncomeBRZero}</span>
+          <span>{numberFormat(comp.dividendIncomeBRB - comp.dividendIncomeBRZero)}</span>
           <span>at {comp.brdiv * 100}%</span>
-          <span>{comp.dividendIncomeBRTax}</span>
+          <span>{numberFormat(comp.dividendIncomeBRTax, 2)}</span>
         </TaxRateBand>
         { comp.dividendIncomeHRZero > 0 && 
           <TaxRateBand>
-            <span>{comp.dividendIncomeHRZero}</span> 
+            <span>{numberFormat(comp.dividendIncomeHRZero)}</span> 
             <span>at 0%</span>
             <span>0</span>
           </TaxRateBand>
         }
         <TaxRateBand>
-          <span>{comp.dividendIncomeHRB - comp.dividendIncomeHRZero}</span>
+          <span>{numberFormat(comp.dividendIncomeHRB - comp.dividendIncomeHRZero)}</span>
           <span>at {comp.hrdiv * 100}%</span>
-          <span>{comp.dividendIncomeHRTax}</span>
+          <span>{numberFormat(comp.dividendIncomeHRTax, 2)}</span>
         </TaxRateBand>
         <TaxRateBand>
-          <span>{comp.dividendIncomeARB}</span>
+          <span>{numberFormat(comp.dividendIncomeARB)}</span>
           <span>at {comp.ardiv * 100}%</span>
-          <span>{comp.dividendIncomeARTax}</span>
+          <span>{numberFormat(comp.dividendIncomeARTax, 2)}</span>
         </TaxRateBand>
       </Section>
 
       <Section>
-        <IncomeElement name="Total tax" value={comp.allTax} elementClass="grand-total-row" />
+        <IncomeElement name="Total tax" value={comp.allTax} elementClass="grand-total-row" decimals="2" />
         { c4Liable && 
         <>
-        <IncomeElement name="Class 4 NICs" value={comp.c4liability} />
-        <IncomeElement name="Total tax & national insurance" value={comp.allTaxNI} elementClass="grand-total-row" /> 
+        <IncomeElement name="Class 4 NICs" value={comp.c4liability} decimals="2" />
+        <IncomeElement name="Total tax & national insurance" value={comp.allTaxNI} elementClass="grand-total-row" decimals="2" /> 
         </> }
       </Section>
       <br />
