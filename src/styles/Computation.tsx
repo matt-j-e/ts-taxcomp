@@ -1,7 +1,14 @@
 import styled from "styled-components";
+import device from "../helpers/device";
 
 export const Container = styled.div`
-  width: 48%;
+  width: 90%;
+  padding: 5%;
+
+  @media ${device.tablet} {
+    width: 48%;
+    padding: 0;
+  }
 `;
 
 export const Section = styled.section`
