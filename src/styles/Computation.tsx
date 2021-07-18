@@ -14,7 +14,7 @@ export const SectionHeading = styled.h3`
   text-transform: uppercase;
   font-weight: normal;
   margin: 0;
-  background-color: rgba(0,0,0,0.1)
+  background-color: rgba(0,0,0,0.1);
 `;
 
 export const TaxRateBand = styled.div`

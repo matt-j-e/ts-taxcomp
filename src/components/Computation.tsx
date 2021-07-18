@@ -2,8 +2,8 @@ import { Data } from "../interfaces";
 import { Comp } from "../resources/comp";
 import IncomeElement from "./IncomeElement";
 import { MainHeading } from "../styles/Global";
-import { Container, Section, SectionHeading, TaxRateBand } from "../styles/Computation";
-import { numberFormat } from "../helpers/numberFormat";
+import { Container, Section, SectionHeading } from "../styles/Computation";
+import TaxRateBand from "./TaxRateBand";
 
 interface ComputationProps {
   fields: Data;
@@ -33,88 +33,27 @@ const Computation = ({ fields, c4Liable }: ComputationProps) => {
 
       <Section>
         <SectionHeading>earned income</SectionHeading>
-        <TaxRateBand>
-          <span>{numberFormat(comp.earnedIncomeBRB)}</span>
-          <span>at {comp.br * 100}%</span>
-          <span>{numberFormat(comp.earnedIncomeBRTax, 2)}</span>
-        </TaxRateBand>
-        <TaxRateBand>
-          <span>{numberFormat(comp.earnedIncomeHRB)}</span>
-          <span>at {comp.hr * 100}%</span>
-          <span>{numberFormat(comp.earnedIncomeHRTax, 2)}</span>
-        </TaxRateBand>
-        <TaxRateBand>
-          <span>{numberFormat(comp.earnedIncomeARB)}</span>
-          <span>at {comp.ar * 100}%</span>
-          <span>{numberFormat(comp.earnedIncomeARTax, 2)}</span>
-        </TaxRateBand>
+        <TaxRateBand taxable={comp.earnedIncomeBRB} rate={comp.br} amountDue={comp.earnedIncomeBRTax} />
+        <TaxRateBand taxable={comp.earnedIncomeHRB} rate={comp.hr} amountDue={comp.earnedIncomeHRTax} />
+        <TaxRateBand taxable={comp.earnedIncomeARB} rate={comp.ar} amountDue={comp.earnedIncomeARTax} />
       </Section>
 
       <Section>
         <SectionHeading>savings income</SectionHeading>
-        { comp.savingsIncomeBRZero > 0 && 
-          <TaxRateBand>
-            <span>{numberFormat(comp.savingsIncomeBRZero)}</span> 
-            <span>at 0%</span>
-            <span>0</span>
-          </TaxRateBand>
-        }
-        <TaxRateBand>
-          <span>{numberFormat(comp.savingsIncomeBRB - comp.savingsIncomeBRZero)}</span>
-          <span>at {comp.br * 100}%</span>
-          <span>{numberFormat(comp.savingsIncomeBRTax, 2)}</span>
-        </TaxRateBand>
-        { comp.savingsIncomeHRZero > 0 && 
-          <TaxRateBand>
-            <span>{numberFormat(comp.savingsIncomeHRZero)}</span> 
-            <span>at 0%</span>
-            <span>0</span>
-          </TaxRateBand>
-        }
-        <TaxRateBand>
-          <span>{numberFormat(comp.savingsIncomeHRB - comp.savingsIncomeHRZero)}</span>
-          <span>at {comp.hr * 100}%</span>
-          <span>{numberFormat(comp.savingsIncomeHRTax, 2)}</span>
-        </TaxRateBand>
-        <TaxRateBand>
-          <span>{numberFormat(comp.savingsIncomeARB)}</span>
-          <span>at {comp.ar * 100}%</span>
-          <span>{numberFormat(comp.savingsIncomeARTax, 2)}</span>
-        </TaxRateBand>
-
+        { comp.savingsIncomeBRZero > 0 && <TaxRateBand taxable={comp.savingsIncomeBRZero} rate={0} amountDue={0} />}
+        <TaxRateBand taxable={comp.savingsIncomeBRB - comp.savingsIncomeBRZero} rate={comp.br} amountDue={comp.savingsIncomeBRTax} />
+        { comp.savingsIncomeHRZero > 0 && <TaxRateBand taxable={comp.savingsIncomeHRZero} rate={0} amountDue={0} />}
+        <TaxRateBand taxable={comp.savingsIncomeHRB - comp.savingsIncomeHRZero} rate={comp.hr} amountDue={comp.savingsIncomeHRTax} />
+        <TaxRateBand taxable={comp.savingsIncomeARB} rate={comp.ar} amountDue={comp.savingsIncomeARTax} />
       </Section>
 
       <Section>
         <SectionHeading>dividend income</SectionHeading>
-        { comp.dividendIncomeBRZero > 0 && 
-          <TaxRateBand>
-            <span>{numberFormat(comp.dividendIncomeBRZero)}</span> 
-            <span>at 0%</span>
-            <span>0</span>
-          </TaxRateBand>
-        }
-        <TaxRateBand>
-          <span>{numberFormat(comp.dividendIncomeBRB - comp.dividendIncomeBRZero)}</span>
-          <span>at {comp.brdiv * 100}%</span>
-          <span>{numberFormat(comp.dividendIncomeBRTax, 2)}</span>
-        </TaxRateBand>
-        { comp.dividendIncomeHRZero > 0 && 
-          <TaxRateBand>
-            <span>{numberFormat(comp.dividendIncomeHRZero)}</span> 
-            <span>at 0%</span>
-            <span>0</span>
-          </TaxRateBand>
-        }
-        <TaxRateBand>
-          <span>{numberFormat(comp.dividendIncomeHRB - comp.dividendIncomeHRZero)}</span>
-          <span>at {comp.hrdiv * 100}%</span>
-          <span>{numberFormat(comp.dividendIncomeHRTax, 2)}</span>
-        </TaxRateBand>
-        <TaxRateBand>
-          <span>{numberFormat(comp.dividendIncomeARB)}</span>
-          <span>at {comp.ardiv * 100}%</span>
-          <span>{numberFormat(comp.dividendIncomeARTax, 2)}</span>
-        </TaxRateBand>
+        { comp.dividendIncomeBRZero > 0 && <TaxRateBand taxable={comp.dividendIncomeBRZero} rate={0} amountDue={0} />}
+        <TaxRateBand taxable={comp.dividendIncomeBRB - comp.dividendIncomeBRZero} rate={comp.brdiv} amountDue={comp.dividendIncomeBRTax} />
+        { comp.dividendIncomeHRZero > 0 && <TaxRateBand taxable={comp.dividendIncomeHRZero} rate={0} amountDue={0} />}
+        <TaxRateBand taxable={comp.dividendIncomeHRB - comp.dividendIncomeHRZero} rate={comp.hrdiv} amountDue={comp.dividendIncomeHRTax} />
+        <TaxRateBand taxable={comp.dividendIncomeARB} rate={comp.ardiv} amountDue={comp.dividendIncomeARTax} />
       </Section>
 
       <Section>
